@@ -7,6 +7,15 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+
+&led_strip {
+    chain-length = <27>;
+};
+
+&caps_word {
+        continue-list = <UNDERSCORE BACKSPACE DELETE SEMI>;
+};
 
 / {
         keymap {
@@ -14,23 +23,24 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  \  |
-// | `ESC |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '  |
+// | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  \  |
+// | ESC  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '  |
 // | CAPS |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  -  |
-//      | RSE / BSPC | LWR / DEL | SHFT |   | LWR / ENT | RSE / SPC | CTRL |
+//      | SHFT | LWR / BSPC | RSE / DEL |   | LWR / ENT | RSE / SPC | CTRL |
                         bindings = <
    &kp TAB      &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-   &gresc       &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp ESC      &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
    &kp CAPSLOCK &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp MINUS
-               &lt 2 BSPC &lt 1 DEL &sk LSHFT   &lt 1 RET &lt 2 SPACE &sk RCTRL
+               &sk LSHFT &lt 1 BSPC &lt 2 DEL    &lt 1 RET &lt 2 SPACE &sk RCTRL
                         >;
                 };
+
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 // |           |  (  |  [  |  ]   |  )   |  `  |   |  *  |  7  |  8  |  9  |  /  |   |
 // |           | GUI | ALT | CTRL | SHFT |  =  |   |  +  |  4  |  5  |  6  |  -  |   |
 // | CAPS_WORD |  {  |  <  |  >   |  }   |  ~  |   |  0  |  1  |  2  |  3  |  .  |   |
-//             | RSE / DEL | LWR / BSPC | SHFT |   | LWR / ENT | RSE / SPC | CTRL |
+//             | SHFT | LWR / BSPC | RSE / DEL |   | LWR / ENT | RSE / SPC | CTRL |
                         bindings = <
    &trans     &kp LPAR &kp LBKT &kp RBKT  &kp RPAR  &kp GRAVE   &kp KP_MULTIPLY &kp N7 &kp N8 &kp N9 &kp KP_DIVIDE &trans
    &trans     &sk LGUI &sk LALT &sk LCTRL &sk LSHFT &kp EQUAL   &kp KP_PLUS     &kp N4 &kp N5 &kp N6 &kp KP_MINUS  &trans
@@ -41,15 +51,15 @@
 
                 raise_layer {
 // -----------------------------------------------------------------------------------------
-// |        |     |     |      |      |     |   | PASTE | REPEAT | ESC   |  TAB  |  DEL  | BSPC |
-// |        | GUI | ALT | CTRL | SHFT | INS |   | COPY  |  LEFT  | DOWN  |  UP   | RIGHT | UNDO |
-// | BT_CLR | BT1 | BT2 | BT3  | BT4  | BT5 |   |  CUT  |  HOME  | PG_DN | PG_UP |  END  | REDO |
-//          | RSE / DEL | LWR / BSPC | SHFT |   | LWR / ENT | RSE / SPC | CTRL |
+// | RGB_F  | RGB_T |     |      |      |     |   | PASTE | REPEAT | ESC   |  TAB  |  DEL  | BSPC |
+// | RGB_R  | GUI   | ALT | CTRL | SHFT | INS |   | COPY  |  LEFT  | DOWN  |  UP   | RIGHT | UNDO |
+// | BT_CLR | BT1   | BT2 | BT3  | BT4  | BT5 |   |  CUT  |  HOME  | PG_DN | PG_UP |  END  | REDO |
+//            | SHFT | LWR / BSPC | RSE / DEL |   | LWR / ENT | RSE / SPC | CTRL |
                         bindings = <
-   &trans     &trans       &trans       &trans        &trans       &trans         &kp LG(V) &key_repeat &kp ESC   &kp TAB   &kp DEL   &kp BSPC
-   &trans     &sk LGUI     &sk LALT     &sk LCTRL     &sk LSHFT    &kp INS        &kp LG(C) &kp LEFT    &kp DOWN  &kp UP    &kp RIGHT &kp LG(Z)
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4   &kp LG(X) &kp HOME    &kp PG_DN &kp PG_UP &kp END   &kp LG(LS(Z))
-                                                           &trans &trans &trans   &trans &trans &trans
+   &rgb_ug RGB_EFF &rgb_ug RGB_TOG &trans       &trans        &trans       &trans         &kp LG(V) &key_repeat &kp ESC   &kp TAB   &kp DEL   &kp BSPC
+   &rgb_ug RGB_EFR &sk LGUI        &sk LALT     &sk LCTRL     &sk LSHFT    &kp INS        &kp LG(C) &kp LEFT    &kp DOWN  &kp UP    &kp RIGHT &kp LG(Z)
+   &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4   &kp LG(X) &kp HOME    &kp PG_DN &kp PG_UP &kp END   &kp LG(LS(Z))
+                                                                   &trans &trans &trans   &trans &trans &trans
                         >;
                 };
         };
