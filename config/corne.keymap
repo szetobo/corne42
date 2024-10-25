@@ -19,7 +19,11 @@
 #define MAGIC   4
 
 &led_strip {
-        chain-length = <27>;
+    chain-length = <27>;
+};
+
+&soft_off {
+    hold-time-ms = <3000>;
 };
 
 / {
@@ -85,27 +89,27 @@
 
         colemak_layer {
             bindings = <
-                &kp ESC    &kp Q  &kp W  &kp F  &kp P  &kp G  &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp BSLH
+                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G  &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp BSLH
                 &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D  &kp H  &kp N  &kp E      &kp I    &kp O     &kp SQT
-                &kp GRAVE  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp K  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
+                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B  &kp K  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
                       &ctrl_magic  &lt LOWER BSPC  &sk LSHFT  &lt LOWER RET  &lt UPPER SPACE  &gui_magic
             >;
         };
 
         qwerty_layer {
             bindings = <
-                &kp ESC    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSLH
+                &kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSLH
                 &to_eng    &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-                &kp GRAVE  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
+                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
                                       &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         lower_layer {
             bindings = <
-                &kp LS(CAPS)  &kp CARET  &kp LBKT  &kp LPAR   &kp LBRC   &kp PRCNT  &kp KP_MULTIPLY  &kp N7  &kp N8  &kp N9  &kp KP_DIVIDE  &kp BSPC
+                &trans        &kp CARET  &kp LBKT  &kp LPAR   &kp LBRC   &kp PRCNT  &kp KP_MULTIPLY  &kp N7  &kp N8  &kp N9  &kp KP_DIVIDE  &kp BSPC
                 &caps_word    &sk LGUI   &sk LALT  &sk LCTRL  &sk LSHFT  &kp EQUAL  &kp KP_PLUS      &kp N4  &kp N5  &kp N6  &kp KP_MINUS   &kp LT
-                &trans        &kp DLLR   &kp RBKT  &kp RPAR   &kp RBRC   &kp TILDE  &kp N0           &kp N1  &kp N2  &kp N3  &kp KP_DOT     &kp GT
+                &kp LS(CAPS)  &kp DLLR   &kp RBKT  &kp RPAR   &kp RBRC   &kp TILDE  &kp N0           &kp N1  &kp N2  &kp N3  &kp KP_DOT     &kp GT
                                                             &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
@@ -122,8 +126,8 @@
         magic_layer {
             bindings = <
                 &bootloader  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG  &none        &kp C_BRI_DN  &kp C_MUTE  &kp C_BRI_UP  &none       &bootloader
-                &none        &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF  &kp C_PREV   &kp C_VOL_DN  &kp C_PP    &kp C_VOL_UP  &kp C_NEXT  &none
-                &sys_reset   &bt_0            &bt_1            &bt_2            &bt_3            &bt_4            &to COLEMAK  &to QWERTY    &to LOWER   &to UPPER     &none       &sys_reset
+                &sys_reset   &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF  &kp C_PREV   &kp C_VOL_DN  &kp C_PP    &kp C_VOL_UP  &kp C_NEXT  &sys_reset
+                &soft_off    &bt_0            &bt_1            &bt_2            &bt_3            &bt_4            &to COLEMAK  &to QWERTY    &to LOWER   &to UPPER     &none       &soft_off
                                                                                     &trans  &trans  &out OUT_USB  &bt BT_CLR  &trans  &trans
             >;
         };
