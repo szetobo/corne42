@@ -22,10 +22,6 @@
     chain-length = <27>;
 };
 
-&soft_off {
-    hold-time-ms = <3000>;
-};
-
 / {
     macros {
         bt_0: bt_profile_macro_0 {
