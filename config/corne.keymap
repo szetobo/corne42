@@ -71,12 +71,12 @@
         ctrl_magic: tap_dance_ctrl_magic {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&sk LCTRL>, <&mo MAGIC>;
+            bindings = <&kp LCTRL>, <&mo MAGIC>;
         };
-        gui_magic: tap_dance_gui_magic {
+        caps_toggle: tap_dance_caps_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&sk RGUI>, <&mo MAGIC>;
+            bindings = <&caps_word>, <&kp LS(CAPS)>;
         };
     };
 
@@ -85,46 +85,46 @@
 
         colemak_layer {
             bindings = <
-                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G  &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp BSLH
-                &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D  &kp H  &kp N  &kp E      &kp I    &kp O     &kp SQT
-                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B  &kp K  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
-                      &ctrl_magic  &lt LOWER BSPC  &sk LSHFT  &lt LOWER RET  &lt UPPER SPACE  &gui_magic
+                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp BSLH
+                &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E      &kp I    &kp O     &kp SQT
+                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
+                      &ctrl_magic  &lt LOWER BSPC  &sk LSHFT    &lt LOWER RET  &lt UPPER SPACE  &mo MAGIC
             >;
         };
 
         qwerty_layer {
             bindings = <
-                &kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSLH
-                &to_eng    &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
-                                      &trans  &trans  &trans  &trans  &trans  &trans
+                &trans   &kp Q  &kp W  &kp E  &kp R  &kp T    &kp Y  &kp U  &kp I   &kp O   &kp P     &trans
+                &to_eng  &kp A  &kp S  &kp D  &kp F  &kp G    &kp H  &kp J  &kp K   &kp L   &kp SEMI  &trans
+                &trans   &kp Z  &kp X  &kp C  &kp V  &kp B    &kp N  &kp M  &trans  &trans  &trans    &trans
+                                    &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans        &kp CARET  &kp LBKT  &kp LPAR   &kp LBRC   &kp PRCNT  &kp KP_MULTIPLY  &kp N7  &kp N8  &kp N9  &kp KP_DIVIDE  &kp BSPC
-                &caps_word    &sk LGUI   &sk LALT  &sk LCTRL  &sk LSHFT  &kp EQUAL  &kp KP_PLUS      &kp N4  &kp N5  &kp N6  &kp KP_MINUS   &kp LT
-                &kp LS(CAPS)  &kp DLLR   &kp RBKT  &kp RPAR   &kp RBRC   &kp TILDE  &kp N0           &kp N1  &kp N2  &kp N3  &kp KP_DOT     &kp GT
-                                                            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans        &kp LT    &kp LBKT  &kp LPAR   &kp LBRC   &kp COLON    &kp COMMA  &kp N7  &kp N8  &kp N9  &kp DEL          &kp BSPC
+                &caps_toggle  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp EQUAL    &kp DOT    &kp N4  &kp N5  &kp N6  &kp KP_MULTIPLY  &kp KP_PLUS
+                &trans        &kp GT    &kp RBKT  &kp RPAR   &kp RBRC   &kp TILDE    &kp N0     &kp N1  &kp N2  &kp N3  &trans           &trans
+                                                           &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         upper_layer {
             bindings = <
-                &kp F11  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5   &kp LG(V)  &key_repeat  &kp ESC    &kp TAB    &kp DEL    &kp BSPC
-                &kp F12  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp INS  &kp LG(C)  &kp LEFT     &kp DOWN   &kp UP     &kp RIGHT  &kp LG(Z)
-                &trans   &kp F6    &kp F7    &kp F8     &kp F9     &kp F10  &kp LG(X)  &kp HOME     &kp PG_DN  &kp PG_UP  &kp END    &kp LG(LS(Z))
-                                                    &trans  &trans  &trans  &trans  &trans  &trans
+                &kp F11  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5     &kp LG(V)  &key_repeat  &kp UP    &kp TAB    &kp DEL    &kp BSPC
+                &kp F12  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp INS    &kp LG(C)  &kp LEFT     &kp DOWN  &kp RIGHT  &kp PG_UP  &sk RSHFT
+                &trans   &kp F6    &kp F7    &kp F8     &kp F9     &kp F10    &kp LG(X)  &kp HOME     &kp ESC   &kp END    &kp PG_DN  &sk RCTRL
+                                                    &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         magic_layer {
             bindings = <
-                &bootloader  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG  &none        &kp C_BRI_DN  &kp C_MUTE  &kp C_BRI_UP  &none       &bootloader
-                &sys_reset   &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF  &kp C_PREV   &kp C_VOL_DN  &kp C_PP    &kp C_VOL_UP  &kp C_NEXT  &sys_reset
-                &soft_off    &bt_0            &bt_1            &bt_2            &bt_3            &bt_4            &to COLEMAK  &to QWERTY    &to LOWER   &to UPPER     &none       &soft_off
-                                                                                    &trans  &trans  &out OUT_USB  &bt BT_CLR  &trans  &trans
+                &bootloader  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG    &kp C_BRI_UP  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp LG(Z)      &bootloader
+                &sys_reset   &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF    &kp C_BRI_DN  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp LG(LS(Z))  &sk RGUI
+                &soft_off    &bt_0            &bt_1            &bt_2            &bt_3            &bt_4              &to COLEMAK  &to QWERTY     &to LOWER   &to UPPER     &to MAGIC      &soft_off
+                                                                                    &trans  &trans  &out OUT_USB    &bt BT_CLR  &trans  &trans
             >;
         };
     };
