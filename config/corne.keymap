@@ -48,12 +48,6 @@
             bindings = <&out OUT_BLE>, <&bt BT_SEL 3>;
         };
 
-        bt_4: bt_profile_macro_4 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&out OUT_BLE>, <&bt BT_SEL 4>;
-        };
-
         to_chi: to_chi_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -68,15 +62,84 @@
     };
 
     behaviors {
-        ctrl_magic: tap_dance_ctrl_magic {
-            compatible = "zmk,behavior-tap-dance";
+        /*
+        plus_sqt: plus_sqt {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp LCTRL>, <&mo MAGIC>;
+            bindings = <&kp KP_PLUS>, <&kp SQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        multiply_dqt: multiply_dqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MULTIPLY>, <&kp DQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        left_home: left_home {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp HOME>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        right_end: right_end {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp END>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        */
         caps_toggle: tap_dance_caps_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&caps_word>, <&kp LS(CAPS)>;
+        };
+        comma_lbkt: comma_lbkt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp LBKT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        dot_rbkt: dot_rbkt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp RBKT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n2_lbrc: n2_lbrc {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&kp LBRC>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n3_rbrc: n3_rbrc {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&kp RBRC>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n8_lpar: n8_lpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        n9_rpar: n9_rpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N9>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        up_pgup: up_pgup {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp PG_UP>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
+        down_pgdn: down_pgdn {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp PG_DN>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
         };
     };
 
@@ -85,45 +148,51 @@
 
         colemak_layer {
             bindings = <
-                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U      &kp Y    &kp SEMI  &kp BSLH
-                &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E      &kp I    &kp O     &kp SQT
-                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
-                      &ctrl_magic  &lt LOWER BSPC  &sk LSHFT    &lt LOWER RET  &lt UPPER SPACE  &mo MAGIC
+                /*
+                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U        &kp Y      &kp SEMI  &kp BSLH
+                &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E        &kp I      &kp O     &kp SQT
+                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &comma_lbkt  &dot_rbkt  &kp FSLH  &kp MINUS
+                      &ctrl_magic  &lt LOWER BSPC  &kp LSHFT    &lt LOWER RET  &lt UPPER SPACE  &mo MAGIC
+                */
+                &none  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U        &kp Y      &kp SEMI  &none
+                &none  &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E        &kp I      &kp O     &none
+                &none  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &comma_lbkt  &dot_rbkt  &kp FSLH  &none
+               &mo MAGIC  &lt LOWER ESC  &mt LSHFT SPACE    &mt RCTRL RET  &lt UPPER BSPC  &mo MAGIC
             >;
         };
 
         qwerty_layer {
             bindings = <
-                &trans   &kp Q  &kp W  &kp E  &kp R  &kp T    &kp Y  &kp U  &kp I   &kp O   &kp P     &trans
-                &to_eng  &kp A  &kp S  &kp D  &kp F  &kp G    &kp H  &kp J  &kp K   &kp L   &kp SEMI  &trans
-                &trans   &kp Z  &kp X  &kp C  &kp V  &kp B    &kp N  &kp M  &trans  &trans  &trans    &trans
-                                    &trans  &trans  &trans    &trans  &trans  &trans
+                &trans  &kp Q  &kp W  &kp E  &kp R  &kp T    &kp Y  &kp U  &kp I   &kp O   &kp P     &trans
+                &trans  &kp A  &kp S  &kp D  &kp F  &kp G    &kp H  &kp J  &kp K   &kp L   &kp SEMI  &trans
+                &trans  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp N  &kp M  &trans  &trans  &trans    &trans
+                                   &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans        &kp LT    &kp LBKT  &kp LPAR   &kp LBRC   &kp COLON    &kp COMMA  &kp N7  &kp N8  &kp N9  &kp DEL          &kp BSPC
-                &caps_toggle  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp EQUAL    &kp DOT    &kp N4  &kp N5  &kp N6  &kp KP_MULTIPLY  &kp KP_PLUS
-                &trans        &kp GT    &kp RBKT  &kp RPAR   &kp RBRC   &kp TILDE    &kp N0     &kp N1  &kp N2  &kp N3  &trans           &trans
-                                                           &trans  &trans  &trans    &trans  &trans  &trans
+                &trans  &kp GRAVE  &to_chi       &to_eng     &kp SQT    &kp COLON       &kp KP_MULTIPLY   &kp N7  &n8_lpar  &n9_rpar  &kp BSLH      &trans
+                &trans  &sk LGUI   &sk LALT      &sk LCTRL   &sk LSHFT  &kp KP_EQUAL    &kp KP_PLUS       &kp N4  &kp N5    &kp N6    &kp KP_MINUS  &trans
+                &trans  &mo MAGIC  &caps_toggle  &kp UNDER   &kp DQT    &kp TILDE       &kp N0            &kp N1  &n2_lbrc  &n3_rbrc  &trans        &trans
+                                                               &none  &trans  &trans    &trans  &trans  &none
             >;
         };
 
         upper_layer {
             bindings = <
-                &kp F11  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5     &kp LG(V)  &key_repeat  &kp UP    &kp TAB    &kp DEL    &kp BSPC
-                &kp F12  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp INS    &kp LG(C)  &kp LEFT     &kp DOWN  &kp RIGHT  &kp PG_UP  &sk RSHFT
-                &trans   &kp F6    &kp F7    &kp F8     &kp F9     &kp F10    &kp LG(X)  &kp HOME     &kp ESC   &kp END    &kp PG_DN  &sk RCTRL
-                                                    &trans  &trans  &trans    &trans  &trans  &trans
+                &trans  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5           &kp LG(V)  &kp LG(Z)      &up_pgup    &kp TAB      &kp DEL    &trans
+                &trans  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp LG(SPACE)    &kp LG(C)  &kp LEFT       &down_pgdn  &kp RIGHT    &mo MAGIC  &trans
+                &trans  &kp F6    &kp F7    &kp F8     &kp F9     &kp F10          &kp LG(X)  &kp LG(LS(Z))  &kp ESC     &key_repeat  &kp SPACE  &trans
+                                                          &none  &trans  &trans    &trans  &trans  &none
             >;
         };
 
         magic_layer {
             bindings = <
-                &bootloader  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG    &kp C_BRI_UP  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp LG(Z)      &bootloader
-                &sys_reset   &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF    &kp C_BRI_DN  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp LG(LS(Z))  &sk RGUI
-                &soft_off    &bt_0            &bt_1            &bt_2            &bt_3            &bt_4              &to COLEMAK  &to QWERTY     &to LOWER   &to UPPER     &to MAGIC      &soft_off
+                &rgb_ug RGB_TOG  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &bootloader    &bootloader  &kp C_PP    &kp C_VOL_UP  &kp C_MUTE  &none  &none
+                &rgb_ug RGB_EFF  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &soft_off      &soft_off    &kp C_PREV  &kp C_VOL_DN  &kp C_NEXT  &none  &none
+                &none            &none            &bt_0            &bt_1            &bt_2            &bt_3          &to COLEMAK  &to QWERTY  &to LOWER     &to UPPER   &none  &none
                                                                                     &trans  &trans  &out OUT_USB    &bt BT_CLR  &trans  &trans
             >;
         };
