@@ -62,72 +62,82 @@
     };
 
     behaviors {
-        /*
-        plus_sqt: plus_sqt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp KP_PLUS>, <&kp SQT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        multiply_dqt: multiply_dqt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp KP_MULTIPLY>, <&kp DQT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        left_home: left_home {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp HOME>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        right_end: right_end {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp RIGHT>, <&kp END>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        */
         caps_toggle: tap_dance_caps_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&caps_word>, <&kp LS(CAPS)>;
         };
-        comma_lbkt: comma_lbkt {
+        comma_semi: comma_semi {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp LBKT>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        dot_rbkt: dot_rbkt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp RBKT>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        n2_lbrc: n2_lbrc {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N2>, <&kp LBRC>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        n3_rbrc: n3_rbrc {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N3>, <&kp RBRC>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        n8_lpar: n8_lpar {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N8>, <&kp LPAR>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        n9_rpar: n9_rpar {
+        comma_semi_lpar: comma_semi_lpar {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N9>, <&kp RPAR>;
+            bindings = <&comma_semi>, <&kp LPAR>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        dot_colon: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        dot_colon_rpar: dot_colon_rpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&dot_colon>, <&kp RPAR>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        sqt_dqt: sqt_dqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp DQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        sqt_dqt_lbrc: sqt_dqt_lbrc {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sqt_dqt>, <&kp LBRC>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        fslh_qmark: fslh_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        fslh_qmark_rbrc: fslh_qmark_rbrc {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&fslh_qmark>, <&kp RBRC>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n2_lt: n2_lt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&kp LT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n3_gt: n3_gt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&kp GT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n8_lbkt: n8_lbkt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&kp LBKT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        n9_rbkt: n9_rbkt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N9>, <&kp RBKT>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
         up_pgup: up_pgup {
             compatible = "zmk,behavior-mod-morph";
@@ -148,42 +158,36 @@
 
         colemak_layer {
             bindings = <
-                /*
-                &kp GRAVE  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U        &kp Y      &kp SEMI  &kp BSLH
-                &to_chi    &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E        &kp I      &kp O     &kp SQT
-                &kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &comma_lbkt  &dot_rbkt  &kp FSLH  &kp MINUS
-                      &ctrl_magic  &lt LOWER BSPC  &kp LSHFT    &lt LOWER RET  &lt UPPER SPACE  &mo MAGIC
-                */
-                &none  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U        &kp Y      &kp SEMI  &none
-                &none  &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E        &kp I      &kp O     &none
-                &none  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &comma_lbkt  &dot_rbkt  &kp FSLH  &none
-               &mo MAGIC  &lt LOWER ESC  &mt LSHFT SPACE    &mt RCTRL RET  &lt UPPER BSPC  &mo MAGIC
+                &none  &kp Q  &kp W  &kp F  &kp P  &kp G    &kp J  &kp L  &kp U             &kp Y            &sqt_dqt_lbrc     &none
+                &none  &kp A  &kp R  &kp S  &kp T  &kp D    &kp H  &kp N  &kp E             &kp I            &kp O             &none
+                &none  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp K  &kp M  &comma_semi_lpar  &dot_colon_rpar  &fslh_qmark_rbrc  &none
+                &mo MAGIC  &lt LOWER BSPC &mt LSHFT BSPC    &mt RCTRL SPACE  &lt UPPER SPACE  &mo MAGIC
             >;
         };
 
         qwerty_layer {
             bindings = <
-                &trans  &kp Q  &kp W  &kp E  &kp R  &kp T    &kp Y  &kp U  &kp I   &kp O   &kp P     &trans
-                &trans  &kp A  &kp S  &kp D  &kp F  &kp G    &kp H  &kp J  &kp K   &kp L   &kp SEMI  &trans
-                &trans  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp N  &kp M  &trans  &trans  &trans    &trans
+                &trans  &kp Q  &kp W  &kp E  &kp R  &kp T    &kp Y  &kp U  &kp I   &kp O   &kp P          &trans
+                &trans  &kp A  &kp S  &kp D  &kp F  &kp G    &kp H  &kp J  &kp K   &kp L   &sqt_dqt_lbrc  &trans
+                &trans  &kp Z  &kp X  &kp C  &kp V  &kp B    &kp N  &kp M  &trans  &trans  &trans         &trans
                                    &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans  &kp GRAVE  &to_chi       &to_eng     &kp SQT    &kp COLON       &kp KP_MULTIPLY   &kp N7  &n8_lpar  &n9_rpar  &kp BSLH      &trans
-                &trans  &sk LGUI   &sk LALT      &sk LCTRL   &sk LSHFT  &kp KP_EQUAL    &kp KP_PLUS       &kp N4  &kp N5    &kp N6    &kp KP_MINUS  &trans
-                &trans  &mo MAGIC  &caps_toggle  &kp UNDER   &kp DQT    &kp TILDE       &kp N0            &kp N1  &n2_lbrc  &n3_rbrc  &trans        &trans
-                                                               &none  &trans  &trans    &trans  &trans  &none
+                &trans  &kp TAB        &to_chi       &to_eng    &kp COLON  &kp GRAVE       &kp KP_MULTIPLY   &kp N7  &n8_lbkt  &n9_rbkt  &kp BSLH   &trans
+                &trans  &sk LGUI       &sk LALT      &sk LCTRL  &sk LSHFT  &kp KP_EQUAL    &kp KP_PLUS       &kp N4  &kp N5    &kp N6    &kp MINUS  &trans
+                &trans  &lt MAGIC ESC  &caps_toggle  &kp RET    &kp UNDER  &kp TILDE       &kp N0            &kp N1  &n2_lt    &n3_gt    &trans     &trans
+                                                                  &none  &trans  &trans    &trans  &trans  &none
             >;
         };
 
         upper_layer {
             bindings = <
-                &trans  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5           &kp LG(V)  &kp LG(Z)      &up_pgup    &kp TAB      &kp DEL    &trans
-                &trans  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp LG(SPACE)    &kp LG(C)  &kp LEFT       &down_pgdn  &kp RIGHT    &mo MAGIC  &trans
-                &trans  &kp F6    &kp F7    &kp F8     &kp F9     &kp F10          &kp LG(X)  &kp LG(LS(Z))  &kp ESC     &key_repeat  &kp SPACE  &trans
+                &trans  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5           &kp LG(V)  &kp LG(Z)      &up_pgup    &kp TAB      &kp BSPC       &trans
+                &trans  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &kp LG(SPACE)    &kp LG(C)  &kp LEFT       &down_pgdn  &kp RIGHT    &lt MAGIC RET  &trans
+                &trans  &kp F6    &kp F7    &kp F8     &kp F9     &kp F10          &kp LG(X)  &kp LG(LS(Z))  &kp ESC     &key_repeat  &kp DEL        &trans
                                                           &none  &trans  &trans    &trans  &trans  &none
             >;
         };
